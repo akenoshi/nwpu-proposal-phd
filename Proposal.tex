@@ -1,0 +1,305 @@
+% !TeX spellcheck = en_US
+% !TeX program = xelatex
+\documentclass[12pt]{article}
+\usepackage{npu-report-style}
+\setmainfont{Times New Roman}
+
+\usepackage{enumerate}
+
+% 显示参考文献、引用超链接
+\usepackage[breaklinks,colorlinks,linkcolor=black,citecolor=black,urlcolor=black]{hyperref}
+% 关闭参考文献、引用超链接
+%\usepackage[pagebackref=false, colorlinks, bookmarks=false ]{hyperref}
+
+\usepackage{graphicx, subfig, epstopdf, amsmath, amssymb,booktabs, paralist, float, caption, xfrac, enumitem, array, multirow, cite}
+\usepackage{textcomp,mathcomp}%摄氏度等符号 \textcelsius 
+%\usepackage{graphicx, subfig, epstopdf, amsmath, booktabs, paralist, float, caption, xfrac, enumitem, array, multirow}
+\graphicspath{{./figure/}}
+
+%caption setting
+%\usepackage{caption}
+%\captionsetup[table]{labelsep=space} % 表
+%\captionsetup{labelsep=none} % 图 
+%\usepackage{subcaption}
+
+%\usepackage{subfigure}
+\usepackage{subfloat}
+
+\usepackage[heading=true]{ctex}
+
+\usepackage{zhnumber} % change section number to chinese
+\renewcommand\thesection{\zhnum{section}}
+\renewcommand \thesubsection {\arabic{section}}
+%\renewcommand \thesubsection {\arabic{subsection}}
+
+%\usepackage{bibspacing}
+%\setlength{\bibspacing}{\baselineskip}
+
+\usepackage{url}
+%\usepackage{cite}
+% comma： 用逗号分隔多个引用； square：使用方括号； super：引用是上角标形式
+\usepackage[square,sort&compress,super,numbers]{natbib}
+
+%调整参考文献之间的距离（类似行距）
+%\setlength{\bibsep}{9pt}
+
+%加入下面这一行，非常灵活。 其中第一个参数是字体大小， 第二个参数是行距大小。自己可以视情况调整。
+%\def\bibfont{\fontsize{10.5pt}{12}\selectfont}
+\usepackage{setspace}
+\linespread{1.5}
+%\usepackage{natbibspacing}
+
+%\usepackage{subfigure}
+\usepackage{titlesec}
+%\titleformat{\section}{\Large\bfseries}{\thesection、}{0em}{}
+%\titleformat{\section}{\heiti\Large}{\thesection、}{0em}{}
+%\titleformat{\subsubsection}{\kaishu\bfseries}{\thesection}{0em}{}
+
+\titleformat{\section}{\heiti\zihao{-4}}{\thesection、}{0em}{}
+\titleformat{\subsubsection}{\kaishu\bfseries\zihao{-4}}{\thesection}{0em}{}
+
+\renewcommand{\refname}{\textbf{1.3参考文献} } % 修改参考文献部分的标题
+%anonymous_review
+%\def\anonymous{yes}
+
+%\usepackage[heading=true]{ctex}
+
+%\usepackage{gbt7714}
+
+%\renewcommand{\bibname}{Reference}
+
+
+\DeclareCaptionLabelSeparator{twospace}{\ ~}   %这三条语句即可
+\captionsetup[figure]{labelsep=space,name={\kaishu 图},font=small,justification=centering}
+%\captionsetup{labelsep=period}
+%\captionsetup[figure]{name={Fig.},labelsep=period} 
+%space去掉点
+%period加点
+%不加space、period这两个就是冒号
+\setlength{\abovecaptionskip}{0.2cm}
+\setlength{\belowcaptionskip}{-0.5cm}
+
+% \newitemsep
+% 下划线
+\makeatletter
+\newcommand\dlmu@underline[2][6cm]{%
+	\hskip1pt\underline{\hb@xt@ #1{\hss#2\hss}}\hskip3pt}
+\let\coverunderline\dlmu@underline
+\makeatother
+
+
+\ifx\anonymous\undefined
+\def\author{ 张\quad 三 }
+\def\school{ 机电工程学院}
+\def\mymajor{ 机械制造及其自动化}
+\def\idnumber{ xxxxxxxxxxxx} %自己的学号
+\def\supervisedsir{王五}
+\def\anonymousSupervisedsir{}
+\def\sirposition{ \ 教授}
+%\def\sirposition{\  教授}
+%\def\authorEnglishName{\textbf{S. Zhang}$^*$}
+%\def\supervisedsirEnglishName{\textbf{Z. Xue}$^\dag$}
+\def\labName{XXX实验室}
+\def\subjectName{XXX}
+\else
+	\def\author{}
+	\def\school{}
+	\def\mymajor{}
+	\def\idnumber{}
+	\def\supervisedsir{}
+	\def\sirposition{}
+	\def\anonymousSupervisedsir{***}
+%	\def\authorEnglishName{*}
+%	\def\supervisedsirEnglishName{\dag}
+	\def\labName{***}
+	\def\subjectName{***}
+\fi
+
+%\renewcommand\figureautorefname{图}		% 重新定义引用图标
+%\renewcommand\tableautorefname{表}		% 重新定义应用表格
+%\def\equationautorefname{式}				% 重新定义公式
+
+% 设置 `论文题目' 
+\nputitle{如何排版自己的博士论文}
+
+\npunumber{\idnumber}
+\npuschool{\school}
+\npumajor{\mymajor}
+\npuname{\author}
+\npudegree{博士}
+\npusupervisor{ \supervisedsir \sirposition}
+\nputype{全日制学术型}
+\npudate{ 2022/12/20}
+%\npudate{\today}
+% 博士
+\npucheckphdtrue
+% 第一次
+\npucheckfirsttrue
+%\npuchecksecondtrue
+
+%% 设置 `论文类型': 取消或添加注释即可勾选相应类型
+\npucheckbasetrue   	%  基础研究
+%\npucheckapplytrue     	%  应用研究
+%\npucheckenginetrue   	%  工程技术
+%\npucheckoveralltrue   %  跨学科研究
+
+\begin{document}
+\section{学位论文研究依据}
+\noindent{\zihao{-4}\kaishu 学位论文的选题依据和研究意义，国内外研究现状和发展态势，主要参考文献，以及已有的工作积累和研究成果。}
+
+
+\subsubsection*{1.1选题背景和研究意义}
+
+为什么要做这件事情？
+
+%\vspace{-0.2cm}
+\subsubsection*{1.2国内外研究现状}
+
+国内外相关领域对这件事情的类似研究现状，分类叙述。
+
+\subsubsection*{1.2.1 xxxxxx}
+
+李四\cite{zhang2022}干了什么事情，取得了什么成果。
+
+\begin{figure}[htb]
+	\centering
+	%\includegraphics{go-rf.png}
+	\includegraphics[width=0.4\linewidth]{nwpu-logo.png}
+	\caption{西北工业大学logo}
+	\label{fig-0101}
+\end{figure}
+
+\begin{equation*}
+	\nabla p = -\frac{\mu}{K} \vec{v} 
+\end{equation*}
+
+\subsubsection*{1.2.2 xxxxxxxx}
+
+
+
+
+
+%\vspace{0.5cm}
+%\subsubsection*{1.2.1 XXXXXX}
+
+\begin{spacing}{1.2}
+		\small
+		%\bibliographystyle{nputhesis}          % 参考文献格式
+		\bibliographystyle{gbt7714-numerical}
+		\bibliography{ref}      % expects file "reference.bib
+\end{spacing}
+
+
+%\subsubsection*{1.3存在问题及展望}
+
+
+\subsubsection*{1.4已有工作积累与研究成果}
+
+
+\clearpage
+\newpage
+
+\section{学位论文研究内容}
+\noindent{\kaishu 学位论文的研究目标、研究内容及拟解决的关键性问题（可续页）}
+\subsubsection*{2.1论文的研究目标}
+
+通过什么方法做成什么事情，对xxx的影响和意义是什么。
+
+\subsubsection*{2.2论文的拟研究内容}
+
+\begin{enumerate}
+	\item[(1)] xxxxxxxx
+	
+	a）xxxxxxxxxxxx
+	
+    b）xxxxxxxxxxxx
+	
+	c）xxxxxxxxxxxx
+	
+	\item[(2)] xxxxxxxxxxx
+	
+
+	\item[(3)] xxxxxxxxxx
+	
+
+
+
+	\item[(4)] xxxxxxxxx
+	
+
+	
+	\item[(5)] xxxxxxxxxxxx
+	
+
+\end{enumerate}
+
+
+\subsubsection*{2.3拟解决的关键性问题}
+
+
+
+\newpage
+\section{学位论文研究计划及预期目标}
+%\subsection*{1. 拟采取的主要理论、研究方法、技术路线和实施方案（可续页）}
+\subsection*{3.1 拟采取的主要理论、研究方法、技术路线和实施方案}
+
+\subsection*{3.1.1 研究方案（主要理论、研究方法、技术路线）}
+
+\subsection*{3.1.2 实施方案}
+
+
+\newpage
+\subsection*{3.2 研究计划可行性，研究条件落实情况，可能存在的问题及解决办法（可续页）}
+
+\subsubsection*{3.2.1 研究计划可行性}
+
+
+
+\subsubsection*{3.2.2 已具备的实验条件主要包括：}
+
+
+
+\subsubsection*{3.2.3 可能存在的问题与解决方法}
+
+\newpage
+\subsection*{3.3 研究计划及预期成果}
+
+
+\begin{table}[h]
+	\centering
+	\renewcommand\arraystretch{1.5}
+	
+    \hrule height0pt \vfill
+	\newlength{\tablesep}
+	\setlength{\tablesep}{5pt}
+	\newcolumntype{C}{>{\hfil}X<{\hfil}}
+	\noindent\hskip-\npusep
+	\begin{tabularx}{\npuwidth}{>{\centering}c|c|C}\hline
+		\multirow{8}*{\parbox{0.05\npuwidth}{\centering  研\\究\\计\\划}}  & 起止年月 & 完成内容 
+	\\ \cline{2-3} & 2021.03$ \sim $2021.09 &  xxxxxxxxxxxx
+	\\ \cline{2-3} & 2021.03$ \sim $2021.09 &  xxxxxxxxxxxx
+	\\ \cline{2-3} & 2021.03$ \sim $2021.09 &  xxxxxxxxxxxx
+	\\ \cline{2-3} & 2021.03$ \sim $2021.09 &  xxxxxxxxxxxx
+	\\ \cline{2-3} & 2021.03$ \sim $2021.09 &  xxxxxxxxxxxx
+	\\ \cline{2-3} & 2021.03$ \sim $2021.09 &  xxxxxxxxxxxx
+	\\ \cline{2-3} & 2021.03$ \sim $2021.09 &  xxxxxxxxxxxx
+	\\ \hline
+  \end{tabularx}
+		
+\end{table}
+
+
+\noindent{\kaishu{预期创新点及成果形式}}
+
+
+（1）预期创新点
+
+
+
+（2）成果形成
+
+
+
+
+
+\end{document}
